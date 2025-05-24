@@ -23,11 +23,12 @@ dispatcher = updater.dispatcher
 # Video extract function
 def get_direct_video_url(video_page_url):
     ydl_opts = {
-        'quiet': True,
-        'skip_download': True,
-        'format': 'best[ext=mp4]/best',
-        'nocheckcertificate': True,
-    }
+    'quiet': True,
+    'skip_download': True,
+    'format': 'best[ext=mp4]/best',
+    'proxy': 'http://123.45.67.89:8080',  # yahan apna proxy dalna hai
+    'nocheckcertificate': True,
+}
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(video_page_url, download=False)
         video_url = info.get('url')
